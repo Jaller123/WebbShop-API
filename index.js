@@ -4,8 +4,9 @@ const fs = require('fs')
 app.use(express.json());
 
 let userInfo = require('./user.json')
+let orders = require('./orders.json')
 
-fs.readFile('user.json', 'utf8', (err, data) =>
+fs.readFile('user.json', (err, data) =>
 {
     if (err)
     {
@@ -24,6 +25,33 @@ fs.readFile('user.json', 'utf8', (err, data) =>
     }
 });
 
+fs.readFile('./orders.json', (err, data) =>
+{
+    if (err)
+    {
+        console.error('Error reading orders.json', err)
+        return;
+    }
+
+    try 
+    {
+        orders = JSON.parse(data)
+        console.log('Orders data loaded successfully')
+    }
+
+    catch
+    {
+        console.error('Error parsing order.json')
+    }
+})
+
+
+app.get("/orders", (req, res) =>
+{
+    res.json(orders)
+});
+
+
 app.get("/users", (req, res) =>
 {
     res.json(userInfo)
@@ -37,6 +65,7 @@ app.post("/register", (req, res) =>
     {
         res.status(400).json({error: "Name and Password are required"});
     }
+
     userInfo.push(newUser)
     res.json(userInfo)
 })
@@ -50,6 +79,28 @@ app.post("/login", (req, res) => {
         res.status(401).json({ error: "Invalid credentials" });
     }
 });
+
+app.post("/orders", (req, res) =>
+{
+    let newOrder = req.body;
+    orders.push(newOrder)
+
+    fs.writeFile('./orders.json', JSON.stringify(orders), (err) =>
+    {
+        if(err)
+        {
+            console.log('Error writing order.js' ,err)
+            res.status(500).json({error: 'Failed to add order'})
+        }
+
+        else 
+        {
+            console.log('Order added successfully')
+            res.json(orders)
+        }
+    })
+})
+
 
 
 app.put("/users", (req, res) => //Update users
