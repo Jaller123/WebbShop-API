@@ -1,34 +1,15 @@
 const express = require('express');
 const app = express();
+const fs = require('fs')
 app.use(express.json());
 
-let userInfo = [
-    {
-        id: 1,
-        name: "Kenath",
-        password: "kenny",
-    },
-];
+let userInfo =[]
 
 app.get("/users", (req, res) =>
 {
     res.json(userInfo)
 });
 
-app.get("/user/:id", (req, res) =>
-{
-    let id = parseInt(req.params.id);
-    const user = userInfo.find(user => user.id === id);
-    if (user) 
-    {
-        res.json(user);
-    }
-    else 
-    {
-        res.status(404).json({error: "User not found"})
-    }
-    res.json(userInfo)
-});
 
 app.post("/register", (req, res) =>
 {
