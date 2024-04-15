@@ -1,34 +1,34 @@
 const express = require('express');
 const app = express();
+const fs = require('fs')
 app.use(express.json());
 
-let userInfo = [
+let userInfo = require('./user.json')
+
+fs.readFile('user.json', 'utf8', (err, data) =>
+{
+    if (err)
     {
-        id: 1,
-        name: "Kenath",
-        password: "kenny",
-    },
-];
+        console.error('Error reading user.json')
+    }
+
+    try 
+    {
+        userinfo = JSON.parse(data);
+        console.log('User data loaded successfully', userInfo)
+    }
+
+    catch (error)
+    {
+        console.error('Error parsing user.json', error)
+    }
+});
 
 app.get("/users", (req, res) =>
 {
     res.json(userInfo)
 });
 
-app.get("/user/:id", (req, res) =>
-{
-    let id = parseInt(req.params.id);
-    const user = userInfo.find(user => user.id === id);
-    if (user) 
-    {
-        res.json(user);
-    }
-    else 
-    {
-        res.status(404).json({error: "User not found"})
-    }
-    res.json(userInfo)
-});
 
 app.post("/register", (req, res) =>
 {
