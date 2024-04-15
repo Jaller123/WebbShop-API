@@ -3,7 +3,26 @@ const app = express();
 const fs = require('fs')
 app.use(express.json());
 
-let userInfo =[]
+let userInfo = require('./user.json')
+
+fs.readFile('user.json', 'utf8', (err, data) =>
+{
+    if (err)
+    {
+        console.error('Error reading user.json')
+    }
+
+    try 
+    {
+        userinfo = JSON.parse(data);
+        console.log('User data loaded successfully', userInfo)
+    }
+
+    catch (error)
+    {
+        console.error('Error parsing user.json', error)
+    }
+});
 
 app.get("/users", (req, res) =>
 {
