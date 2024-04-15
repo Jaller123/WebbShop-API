@@ -4,7 +4,7 @@ app.use(express.json());
 
 let userInfo = [
     {
-        id: 1,
+        id: 3,
         name: "Kenath",
         password: "kenny",
     },
@@ -15,42 +15,12 @@ app.get("/users", (req, res) =>
     res.json(userInfo)
 });
 
-app.get("/user/:id", (req, res) =>
+app.post("/users", (req, res) =>
 {
-    let id = parseInt(req.params.id);
-    const user = userInfo.find(user => user.id === id);
-    if (user) 
-    {
-        res.json(user);
-    }
-    else 
-    {
-        res.status(404).json({error: "User not found"})
-    }
-    res.json(userInfo)
-});
-
-app.post("/register", (req, res) =>
-{
-    let { name, password } = req.body;
-    if (!name || !password)
-    {
-        res.status(400).json({error: "Name and Password are required"});
-    }
+    let newUser = req.body
     userInfo.push(newUser)
     res.json(userInfo)
 })
-
-app.post("/login", (req, res) => {
-    let { name, password } = req.body;
-    let user = userInfo.find(user => user.name === name && user.password === password);
-    if (user) {
-        res.json({ message: "Login successful" });
-    } else {
-        res.status(401).json({ error: "Invalid credentials" });
-    }
-});
-
 
 app.put("/users", (req, res) => //Update users
 {
