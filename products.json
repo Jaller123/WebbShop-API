@@ -1,0 +1,23 @@
+[
+    {
+        "id": "324",
+        "name": "T-shirt",
+        "description": "Comfortable cotton t-shirt",
+        "price": 20,
+        "image": "https://cdnspecseu.bizay.com/product/migrated/t-shirt-199-27-340427_h_f_en.png?version=0455862b53e25de28b824d4789361e3b"
+    },
+    {
+        "id": "325",
+        "name": "Jeans",
+        "description": "Classic denim jeans",
+        "price": 50,
+        "image": "https://static.miinto.net/b65820e0bfdf713ed9ce7be4f6d75159.jpg?width=693&height=842"
+    },
+    {
+        "id": "326",
+        "name": "Hoodie",
+        "description": "Warm and cozy hoodie",
+        "price": 40,
+        "image": "https://www.rudecru.com/eu/31048-large_default/baggy-hoodie-heather-grey.jpg"
+    }
+]

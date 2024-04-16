@@ -45,6 +45,26 @@ fs.readFile('./orders.json', (err, data) =>
     }
 })
 
+fs.readFile('./products.json', (err, data) =>
+{
+    if (err)
+    {
+        console.error('Error reading products.json', err)
+        return;
+    }
+
+    try 
+    {
+        products = JSON.parse(data)
+        console.log('Products data loaded successfully')
+    }
+
+    catch
+    {
+        console.error('Error parsing products.json')
+    }
+})
+
 
 app.get("/orders", (req, res) =>
 {
@@ -55,6 +75,11 @@ app.get("/orders", (req, res) =>
 app.get("/users", (req, res) =>
 {
     res.json(userInfo)
+});
+
+app.get("/products", (req, res) =>
+{
+    res.json(products)
 });
 
 
