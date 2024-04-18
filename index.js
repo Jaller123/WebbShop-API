@@ -1,10 +1,14 @@
-const express = require('express');
-const app = express();
-const fs = require('fs')
-app.use(express.json());
+let express = require('express');
+let app = express();
+let cors = require('cors')
+let fs = require('fs')
+
 
 let userInfo = require('./user.json')
 let orders = require('./orders.json')
+app.use(cors())
+
+app.use(express.json());
 
 fs.readFile('user.json', (err, data) =>
 {
@@ -66,24 +70,24 @@ fs.readFile('./products.json', (err, data) =>
 })
 
 
-app.get("/orders", (req, res) =>
+app.get, cors(), ("/orders", (req, res) =>
 {
     res.json(orders)
 });
 
 
-app.get("/users", (req, res) =>
+app.get, cors(),("/users", (req, res) =>
 {
     res.json(userInfo)
 });
 
-app.get("/products", (req, res) =>
+app.get, cors(), ("/products", (req, res) =>
 {
     res.json(products)
 });
 
 
-app.post("/register", (req, res) =>
+app.post, cors(), ("/register", (req, res) =>
 {
     let { name, password } = req.body;
     if (!name || !password)
@@ -95,7 +99,7 @@ app.post("/register", (req, res) =>
     res.json(userInfo)
 })
 
-app.post("/login", (req, res) => {
+app.post,  cors(), ("/login", (req, res) => {
     let { name, password } = req.body;
     let user = userInfo.find(user => user.name === name && user.password === password);
     if (user) {
@@ -105,7 +109,7 @@ app.post("/login", (req, res) => {
     }
 });
 
-app.post("/orders", (req, res) =>
+app.post, cors(), ("/orders", (req, res) =>
 {
     let newOrder = req.body;
     orders.push(newOrder)
