@@ -87,19 +87,23 @@ app.get ("/products",cors(),(req, res) =>
 })
 
 
-app.post, cors(), ("/register", (req, res) =>
-{
+app.post("/users", cors(), (req, res) => {
     let { name, password } = req.body;
     if (!name || !password)
     {
-        res.status(400).json({error: "Name and Password are required"});
+        res.status(400).json({ error: "Name and Password are required" });
+    } else 
+    {
+     
+        let newUser = { name, password };
+        
+        userInfo.push(newUser);
+        
+        res.json(userInfo);
     }
+});
 
-    userInfo.push(newUser)
-    res.json(userInfo)
-})
-
-app.post,  cors(), ("/login", (req, res) => {
+app.post ("/login", cors(), (req, res) => {
     let { name, password } = req.body;
     let user = userInfo.find(user => user.name === name && user.password === password);
     if (user) {
@@ -109,7 +113,7 @@ app.post,  cors(), ("/login", (req, res) => {
     }
 });
 
-app.post, cors(), ("/orders", (req, res) =>
+app.post("/orders", cors(), (req, res) =>
 {
     let newOrder = req.body;
     orders.push(newOrder)
@@ -128,6 +132,30 @@ app.post, cors(), ("/orders", (req, res) =>
             res.json(orders)
         }
     })
+
+    app.delete("/users/:id", (req, res) =>
+    {
+        let id = req.params.id
+        let foundId = false;
+        for (let i = 0; i < userInfo.length; i++)
+        {
+            if (userInfo[i].id == id)
+            {
+                userInfo.splice(i, 1)
+                foundId = true;
+            } //Loops through userInfo and if it finds an element that is
+              //equal to index then it will remove 1 index of userInfo
+            
+        }
+        if (!foundId)
+        {
+            res.status(404).json({error: "Users id not found"})
+        }
+        else
+        {
+            res.json(userInfo);
+        }
+    });
 })
 
 
@@ -143,29 +171,7 @@ app.put("/users", (req, res) => //Update users
     res.json(userInfo);
 })
 
-app.delete("/users/:id", (req, res) =>
-{
-    let id = req.params.id
-    let foundId = false;
-    for (let i = 0; i < userInfo.length; i++)
-    {
-        if (userInfo[i].id == id)
-        {
-            userInfo.splice(i, 1)
-            foundId = true;
-        } //Loops through userInfo and if it finds an element that is
-          //equal to index then it will remove 1 index of userInfo
-        
-    }
-    if (!foundId)
-    {
-        res.status(404).json({error: "Users id not found"})
-    }
-    else
-    {
-        res.json(userInfo);
-    }
-});
+
 
 
 app.listen('3001', () => 
