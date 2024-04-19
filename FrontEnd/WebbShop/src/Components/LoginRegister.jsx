@@ -25,10 +25,30 @@ const Login = () =>
       console.error('There was a problem with the fetch operation:', error);
     });
     
-    const createUser = async () =>
-    {
+    const createUser = async () => {
+      try 
+      {
+        let response = await fetch('http://localhost:3001/users', 
+        {
+          method: 'POST',
+          headers: 
+          { "Content-type": "application/json"},
+        });
+    
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+       
+      } 
       
-    }
+      catch (error) 
+      {
+        console.error('There was a problem with the fetch operation:', error);
+      }
+    };
+    
+    
+    
   }, []);
 
   
@@ -37,7 +57,7 @@ const Login = () =>
       <input type="text" />
       <input type="text" />
       <button className='btn'>Login</button>
-      <button className='btn'>Create User</button>
+      <button onClick ={createUser} className='btn'>Create User</button>
     </div>
   )
 }
