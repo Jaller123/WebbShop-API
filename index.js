@@ -6,6 +6,7 @@ let fs = require('fs')
 
 let userInfo = require('./user.json')
 let orders = require('./orders.json')
+let products = require('./products.json')
 app.use(cors())
 
 app.use(express.json());
@@ -67,24 +68,23 @@ fs.readFile('./products.json', (err, data) =>
     {
         console.error('Error parsing products.json')
     }
-})
 
-
-app.get, cors(), ("/orders", (req, res) =>
+    app.get ("/orders",cors(),(req, res) =>
 {
     res.json(orders)
 });
 
 
-app.get, cors(),("/users", (req, res) =>
+app.get ("/users",cors(),(req, res) =>
 {
     res.json(userInfo)
 });
 
-app.get, cors(), ("/products", (req, res) =>
+app.get ("/products",cors(),(req, res) =>
 {
     res.json(products)
 });
+})
 
 
 app.post, cors(), ("/register", (req, res) =>
