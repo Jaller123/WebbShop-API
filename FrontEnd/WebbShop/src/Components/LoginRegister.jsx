@@ -41,6 +41,27 @@ const Login = () =>
 
       if (response.ok) {
         const data = await response.json();
+        console.log('Login successful:', data);
+      } else {
+        console.log('Incorrect username or password');
+      }
+    } catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
+    }
+  };
+
+  const handleRegister = async () => {
+    try {
+      const response = await fetch('http://localhost:3001/users/create', {
+        method: 'POST',
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({ name: username, password: password })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
         localStorage.setItem("user-info", JSON.stringify(data)); 
         console.log('Login successful:', data);
       } else {
@@ -58,7 +79,7 @@ const Login = () =>
       <input type="text" placeholder="Username" onChange = {(e) => setUsername(e.target.value)}/>
       <input type="password" placeholder="Password" onChange = {(e) => setPassword(e.target.value)}/>
       <button onClick = {handleLogin} className='btn'>Login</button>
-      <button onClick ={createUser} className='btn'>Create User</button>
+      <button onClick ={handleRegister} className='btn'>Create User</button>
     </div>
   )
 }

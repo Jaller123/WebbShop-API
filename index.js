@@ -86,7 +86,7 @@ app.get ("/products",cors(),(req, res) =>
 });
 })
 
-
+//Create/Register a user
 app.post("/users/create", cors(), (req, res) => {
     let { name, password } = req.body;
     if (!name || !password)
@@ -126,7 +126,7 @@ app.post("/orders", cors(), (req, res) =>
 })
 
 
-
+//Updating a user
 app.put("/users/update", (req, res) => //Update users
 {
     const newLogin = req.body.newLogin
@@ -138,6 +138,7 @@ app.put("/users/update", (req, res) => //Update users
     res.json(userInfo);
 })
 
+//Deleting a user
 app.delete("/users/delete", (req, res) =>
     {
         let id = req.params.id
@@ -161,6 +162,23 @@ app.delete("/users/delete", (req, res) =>
             res.json(userInfo);
         }
     });
+
+    //Login Button
+    app.post("/login", (req, res) => {
+        const { name, password } = req.body;
+      
+        
+        const user = userInfo.find(user => user.name === name);
+      
+        if (user && user.password === password) {
+        
+          res.json({ message: "Login successful", user });
+        } else {
+         
+          res.status(401).json({ error: "Incorrect username or password" });
+        }
+      });
+      
 
 
 app.listen('3001', () => 
