@@ -63,7 +63,7 @@ const Login = () =>
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem("user-info", JSON.stringify(data)); 
-        console.log('Login successful:', data);
+        console.log('Registration successful:', data);
       } else {
         const errorData = await response.json();
         alert(errorData.error); 
