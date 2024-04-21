@@ -1,11 +1,13 @@
 import React from 'react'
 import './Login.css'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useHistory } from 'react';
 
 const Login = () => 
 {
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
   const [createUser, setCreateUser] = useState("")
-  const [loginUser, setLoginUser] = useState("")
+ 
   
 
   useEffect(() =>
@@ -25,38 +27,37 @@ const Login = () =>
       console.error('There was a problem with the fetch operation:', error);
     });
     
-    const createUser = async () => {
-      try 
-      {
-        let response = await fetch('http://localhost:3001/users', 
-        {
-          method: 'POST',
-          headers: 
-          { "Content-type": "application/json"},
-        });
-    
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-       
-      } 
-      
-      catch (error) 
-      {
-        console.error('There was a problem with the fetch operation:', error);
-      }
-    };
-    
-    
-    
   }, []);
 
+  const handleLogin = async () => {
+    try {
+      const response = await fetch('http://localhost:3001/login', {
+        method: 'POST',
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({ name: username, password: password })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem("user-info", JSON.stringify(data)); 
+        console.log('Login successful:', data);
+      } else {
+        const errorData = await response.json();
+        alert(errorData.error); 
+      }
+    } catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
+    }
+  };
+  
   
   return (
     <div className="input">
-      <input type="text" />
-      <input type="text" />
-      <button className='btn'>Login</button>
+      <input type="text" placeholder="Username" onChange = {(e) => setUsername(e.target.value)}/>
+      <input type="password" placeholder="Password" onChange = {(e) => setPassword(e.target.value)}/>
+      <button onClick = {handleLogin} className='btn'>Login</button>
       <button onClick ={createUser} className='btn'>Create User</button>
     </div>
   )
