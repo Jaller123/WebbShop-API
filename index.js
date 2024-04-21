@@ -1,13 +1,13 @@
 let express = require('express');
 let app = express();
 let cors = require('cors')
+app.use(cors())
 let fs = require('fs')
 
 
 let userInfo = require('./user.json')
 let orders = require('./orders.json')
 let products = require('./products.json')
-app.use(cors())
 
 app.use(express.json());
 
@@ -87,7 +87,7 @@ app.get ("/products",cors(),(req, res) =>
 })
 
 
-app.post("/users", cors(), (req, res) => {
+app.post("/users/create", cors(), (req, res) => {
     let { name, password } = req.body;
     if (!name || !password)
     {
@@ -100,16 +100,6 @@ app.post("/users", cors(), (req, res) => {
         userInfo.push(newUser);
         
         res.json(userInfo);
-    }
-});
-
-app.post ("/login", cors(), (req, res) => {
-    let { name, password } = req.body;
-    let user = userInfo.find(user => user.name === name && user.password === password);
-    if (user) {
-        res.json({ message: "Login successful" });
-    } else {
-        res.status(401).json({ error: "Invalid credentials" });
     }
 });
 
@@ -133,7 +123,22 @@ app.post("/orders", cors(), (req, res) =>
         }
     })
 
-    app.delete("/users/:id", (req, res) =>
+})
+
+
+
+app.put("/users/update", (req, res) => //Update users
+{
+    const newLogin = req.body.newLogin
+    for (let i = 0; i < userInfo.length; i++)
+    {
+        userInfo[i].name.password = newLogin
+    }
+    //Loops through every name to update
+    res.json(userInfo);
+})
+
+app.delete("/users/delete", (req, res) =>
     {
         let id = req.params.id
         let foundId = false;
@@ -156,22 +161,6 @@ app.post("/orders", cors(), (req, res) =>
             res.json(userInfo);
         }
     });
-})
-
-
-
-app.put("/users", (req, res) => //Update users
-{
-    const newName = req.body.newName
-    for (let i = 0; i < userInfo.length; i++)
-    {
-        userInfo[i].name = newName
-    }
-    //Loops through every name to update
-    res.json(userInfo);
-})
-
-
 
 
 app.listen('3001', () => 
