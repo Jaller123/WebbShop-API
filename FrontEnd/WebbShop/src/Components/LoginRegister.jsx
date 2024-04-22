@@ -1,17 +1,20 @@
 import React from 'react'
 import './Login.css'
-import { useState, useEffect, useHistory } from 'react';
+import { useState, useEffect } from 'react';
+import {  Link, useNavigate } from 'react-router-dom';
 
 const Login = () => 
 {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [createUser, setCreateUser] = useState("")
+  const navigate = useNavigate();
  
   
 
   useEffect(() =>
   {
+
     fetch('http://localhost:3001/users')
     .then(response => {
       if (!response.ok) {
@@ -29,46 +32,60 @@ const Login = () =>
     
   }, []);
 
-  const handleLogin = async () => {
+  const handleLogin = async () =>
+   {
     try {
       const response = await fetch('http://localhost:3001/login', {
         method: 'POST',
-        headers: {
-          "Content-type": "application/json"
-        },
+        headers: {"Content-type": "application/json"},
         body: JSON.stringify({ name: username, password: password })
       });
 
-      if (response.ok) {
+      if (response.ok) 
+      {
         const data = await response.json();
         console.log('Login successful:', data);
-      } else {
+        setUsername('')
+        setPassword('')
+        navigate('/products');
+      } 
+      else 
+      {
         console.log('Incorrect username or password');
+        setUsername('')
+        setPassword('')
       }
-    } catch (error) {
+    } 
+    catch (error)
+    {
       console.error('There was a problem with the fetch operation:', error);
     }
   };
 
-  const handleRegister = async () => {
-    try {
+  const handleRegister = async () => 
+  {
+    try 
+    {
       const response = await fetch('http://localhost:3001/users/create', {
         method: 'POST',
-        headers: {
-          "Content-type": "application/json"
-        },
+        headers: {"Content-type": "application/json"},
         body: JSON.stringify({ name: username, password: password })
       });
 
-      if (response.ok) {
+      if (response.ok) 
+      {
         const data = await response.json();
         localStorage.setItem("user-info", JSON.stringify(data)); 
         console.log('Registration successful:', data);
-      } else {
+      } 
+      else 
+      {
         const errorData = await response.json();
         alert(errorData.error); 
       }
-    } catch (error) {
+    } 
+    catch (error) 
+    {
       console.error('There was a problem with the fetch operation:', error);
     }
   };
@@ -76,8 +93,8 @@ const Login = () =>
   
   return (
     <div className="input">
-      <input type="text" placeholder="Username" onChange = {(e) => setUsername(e.target.value)}/>
-      <input type="password" placeholder="Password" onChange = {(e) => setPassword(e.target.value)}/>
+      <input type="text" placeholder="Username" value = {username} onChange = {(e) => setUsername(e.target.value)}/>
+      <input type="password" placeholder="Password" value = {password} onChange = {(e) => setPassword(e.target.value)}/>
       <button onClick = {handleLogin} className='btn'>Login</button>
       <button onClick ={handleRegister} className='btn'>Create User</button>
     </div>

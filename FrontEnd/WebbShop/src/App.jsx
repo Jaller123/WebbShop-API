@@ -1,16 +1,22 @@
 import { useState } from 'react'
 import Navbar from './Components/Navbar'
-import Login from './Components/LoginRegister'
+import LoginRegister from './Components/LoginRegister'
 import Products from './Components/Products'
 
-function App() {
-
+function App()
+ {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  
+  const handleLogin = () =>
+  {
+    setIsLoggedIn(true)
+  }
   return (
     <>
       <div>
-        <Login />
-        {/* <Products />
-        <Navbar /> */}
+      {!isLoggedIn && <LoginRegister onLogin={handleLogin}/>}
+      {isLoggedIn && <Products />}
+      {/* <Navbar /> */}
       </div>
     </>
   )
