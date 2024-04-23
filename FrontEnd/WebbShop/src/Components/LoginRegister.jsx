@@ -1,12 +1,13 @@
 import React from 'react'
 import './Login.css'
 import { useState, useEffect } from 'react';
-import {  Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => 
+const LoginRegister = () => 
 {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [isLoggedin, setIsLoggedIn] = useState(false)
   const [createUser, setCreateUser] = useState("")
   const navigate = useNavigate();
  
@@ -47,7 +48,8 @@ const Login = () =>
         console.log('Login successful:', data);
         setUsername('')
         setPassword('')
-        navigate('/products');
+        navigate('/Products');
+        setIsLoggedIn(true)
       } 
       else 
       {
@@ -102,4 +104,4 @@ const Login = () =>
 }
 
 
-export default Login
+export default LoginRegister

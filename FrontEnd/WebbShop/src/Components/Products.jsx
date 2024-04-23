@@ -6,7 +6,6 @@ const Products = () => {
 
   useEffect(() =>
   {
-    if (isLoggedIn)
     {    
       fetch('http://localhost:3001/products')
       .then(response => {
@@ -24,7 +23,7 @@ const Products = () => {
       });
     }
     
-  }, [isLoggedIn]);
+  }, []);
 
   return (
     <>
