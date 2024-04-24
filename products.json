@@ -4,20 +4,139 @@
         "name": "T-shirt",
         "description": "Comfortable cotton t-shirt",
         "price": 20,
-        "image": "https://cdnspecseu.bizay.com/product/migrated/t-shirt-199-27-340427_h_f_en.png?version=0455862b53e25de28b824d4789361e3b"
+        "image": "https://www.simpleimageresizer.com/_uploads/photos/7444b59e/Screenshot_1_4_500x515.png"
     },
     {
         "id": "325",
         "name": "Jeans",
         "description": "Classic denim jeans",
         "price": 50,
-        "image": "https://static.miinto.net/b65820e0bfdf713ed9ce7be4f6d75159.jpg?width=693&height=842"
+        "image": "https://www.simpleimageresizer.com/_uploads/photos/7444b59e/mnz-m1m2EZOZVwA-unsplash_4_500x400.jpg"
     },
     {
         "id": "326",
         "name": "Hoodie",
         "description": "Warm and cozy hoodie",
         "price": 40,
-        "image": "https://www.rudecru.com/eu/31048-large_default/baggy-hoodie-heather-grey.jpg"
+        "image": "https://www.simpleimageresizer.com/_uploads/photos/7444b59e/21-350_xl_1_500x501.jpg"
+    },
+    {
+        "id": "327",
+        "name": "Sneakers",
+        "description": "Stylish sneakers for casual wear",
+        "price": 60,
+        "image": "https://www.simpleimageresizer.com/_uploads/photos/7444b59e/download_500x500.png"
+    },
+    {
+        "id": "328",
+        "name": "Dress Shirt",
+        "description": "Formal dress shirt for special occasions",
+        "price": 30,
+        "image": "https://www.simpleimageresizer.com/_uploads/photos/7444b59e/download_3_500x500.jpg"
+    },
+    {
+        "id": "329",
+        "name": "Running Shoes",
+        "description": "Lightweight running shoes for athletes",
+        "price": 70,
+        "image": "https://www.simpleimageresizer.com/_uploads/photos/7444b59e/downloadd_500x500.png"
+    },
+    {
+        "id": "330",
+        "name": "Leather Jacket",
+        "description": "Classic leather jacket for a rugged look",
+        "price": 150,
+        "image": "https://www.simpleimageresizer.com/_uploads/photos/7444b59e/98047-19VM_F_500x451.png"
+    },
+    {
+        "id": "331",
+        "name": "Backpack",
+        "description": "Spacious backpack for daily essentials",
+        "price": 45,
+        "image": "https://www.simpleimageresizer.com/_uploads/photos/7444b59e/starttid-backpack-grey__0976467_pe814916_s5_500x500.png"
+    },
+    {
+        "id": "332",
+        "name": "Sunglasses",
+        "description": "Trendy sunglasses for UV protection",
+        "price": 25,
+        "image": "https://www.simpleimageresizer.com/_uploads/photos/7444b59e/Quay_HighKey_ExtraLarge_BlackBlackMintFade_Front_500x500.png"
+    },
+    {
+        "id": "333",
+        "name": "Smartwatch",
+        "description": "High-tech smartwatch for fitness tracking",
+        "price": 100,
+        "image": "https://www.simpleimageresizer.com/_uploads/photos/7444b59e/40388-4_500x500.jpg"
+    },
+    {
+        "id": "334",
+        "name": "Denim Skirt",
+        "description": "Fashionable denim skirt for a casual look",
+        "price": 35,
+        "image": "https://www.simpleimageresizer.com/_uploads/photos/7444b59e/LY23-162360-447_2MMMellaDenimSkirtDarkBlue_1440x_500x542.jpg"
+    },
+    {
+        "id": "335",
+        "name": "Leather Wallet",
+        "description": "Stylish leather wallet for carrying essentials",
+        "price": 30,
+        "image": "https://www.simpleimageresizer.com/_uploads/photos/7444b59e/eosr0531-edit_500x500.png"
+    },
+    {
+        "id": "336",
+        "name": "Sports Bra",
+        "description": "Supportive sports bra for workouts",
+        "price": 25,
+        "image": "https://www.simpleimageresizer.com/_uploads/photos/7444b59e/4NQUEWNBLAXLG_VA_999_500x500.jpg"
+    },
+    {
+        "id": "337",
+        "name": "Gucci Savoy Duffle Bag",
+        "description": "Gucci duffle bag for travel",
+        "price": 30000,
+        "image": "https://www.simpleimageresizer.com/_uploads/photos/7444b59e/724612_9C2ST_8746_002_095_0000_Light-Gucci-Savoy-large-duffle-bag_500x500.png"
+    },
+    {
+        "id": "338",
+        "name": "Leather Belt",
+        "description": "Classic leather belt for everyday wear",
+        "price": 40,
+        "image": "https://www.simpleimageresizer.com/_uploads/photos/7444b59e/belt-in-dark-brown-leather_500x500.png"
+    },
+    {
+        "id": "339",
+        "name": "Cotton Shorts",
+        "description": "Casual cotton shorts for a relaxed look",
+        "price": 20,
+        "image": "https://www.simpleimageresizer.com/_uploads/photos/7444b59e/Future_Icons_3-Stripes_Loose_Cotton_Shorts_Svart_HE4968_01_laydown_500x500.png"
+    },
+    {
+        "id": "340",
+        "name": "Graphic T-shirt",
+        "description": "Stylish graphic t-shirt for a trendy vibe",
+        "price": 25,
+        "image": "https://www.simpleimageresizer.com/_uploads/photos/7444b59e/kids_reflections_vintage_graphic_tee_retro_lake_t_shirt_5000x_500x500.jpg"
+    },
+    {
+        "id": "341",
+        "name": "Denim Jacket",
+        "description": "Fashionable denim jacket for all occasions",
+        "price": 60,
+        "image": "https://www.simpleimageresizer.com/_uploads/photos/7444b59e/eqyjk03796_quiksilverf_byl0_frt1_500x671.jpg"
+    },
+    {
+        "id": "342",
+        "name": "Leather Gloves",
+        "description": "Stylish leather gloves for cold weather",
+        "price": 35,
+        "image": "https://www.simpleimageresizer.com/_uploads/photos/7444b59e/download_3_1_500x476.jpg"
+    },
+    {
+        "id": "343",
+        "name": "Wool Sweater",
+        "description": "Cozy wool sweater for chilly days",
+        "price": 55,
+        "image": "https://www.simpleimageresizer.com/_uploads/photos/7444b59e/download_4_500x500.jpg"
     }
 ]
