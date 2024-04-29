@@ -1,6 +1,6 @@
 import React from 'react'
 import './Login.css'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const LoginRegister = () => 
@@ -11,6 +11,9 @@ const LoginRegister = () =>
   const [createUser, setCreateUser] = useState("")
   const navigate = useNavigate();
  
+  const usernameRef = useRef();
+  const passwordRef = useRef();
+
   
 
   useEffect(() =>
@@ -95,8 +98,8 @@ const LoginRegister = () =>
   
   return (
     <div className="input">
-      <input type="text" placeholder="Username" value = {username} onChange = {(e) => setUsername(e.target.value)}/>
-      <input type="password" placeholder="Password" value = {password} onChange = {(e) => setPassword(e.target.value)}/>
+         <input type="text" placeholder="Username" ref={usernameRef} value={username} onChange={() => setUsername(usernameRef.current.value)} />
+      <input type="password" placeholder="Password" ref={passwordRef} value={password} onChange={() => setPassword(passwordRef.current.value)} />
       <button onClick = {handleLogin} className='btn'>Login</button>
       <button onClick ={handleRegister} className='btn'>Create User</button>
     </div>
