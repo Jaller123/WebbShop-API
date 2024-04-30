@@ -5,6 +5,7 @@ import Navbar from './Navbar'
 
 const Products = () => {
 const [products, setProducts] = useState([])
+const [storeProducts, setStoreProducts] = useState([])
 
   useEffect(() =>
   {
@@ -19,6 +20,7 @@ const [products, setProducts] = useState([])
       .then(data => {
         console.log(data);
         setProducts(data)
+        setStoreProducts(data)
         
       })
       .catch(error => {
@@ -30,16 +32,18 @@ const [products, setProducts] = useState([])
 
   return (
     <>
-     <div>Products</div>
-     <ul>
-      {products.map(product => (
-      <li key={products.id}>
-      <image>{products.image}</image>
-      <h3>{product.name}</h3>
-      <p>{product.description}</p>
-      <p>Price: ${product.price}</p>
-      </li>))}
-     </ul>
+     <div>Products
+      <SearchProducts setProducts={setProducts} products={products} storeProducts={storeProducts}/>
+      <ul>
+        {products.map(product => (
+          <li key={products.id}>
+          <image>{products.image}</image>
+          <h3>{product.name}</h3>
+          <p>{product.description}</p>
+          <p>Price: ${product.price}</p>
+          </li>))}
+      </ul>
+     </div>
     </>
   )
 }
